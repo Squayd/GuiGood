@@ -18,7 +18,7 @@ namespace GuiGood
     public partial class GuiGood : Form
     {
 
-        //Variables
+        //Variable
         #region Variables
         FunctionsLibrary funclib = new FunctionsLibrary();
         ListViewColumnSorter lvwColumnSorter = new ListViewColumnSorter();
