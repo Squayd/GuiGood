@@ -9,97 +9,58 @@ using System.Diagnostics;
 using System.Windows.Automation;
 using System.Windows.Forms;
 using System.Collections;
+using System.Drawing;
 
 namespace GuiGood
 {
-    public class FunctionsLibrary
+    public static class FunctionsLibrary
     {
         //Variables
-        GuiGood gui;
+        
         public string ProcessName = "Systest";
 
-        //GUI Functions
-        /// <summary>
-        /// Set the GUI reference
-        /// </summary>
-        /// <param name="gui1"></param>
-        public void SetGUI(GuiGood gui1)
+        //Add text to logs with color
+        public static void AppendText(RichTextBox box, string text, Color color)
         {
-            gui = gui1;
-        }
-        /// <summary>
-        /// Load Objects into ListView
-        /// </summary>
-        public void LoadObjects()
-        {
-            //Grab Process
-            Process[] processes = Process.GetProcessesByName(ProcessName);
-            //Foreach process
-            foreach (Process p in processes)
-            {
-                //Declare Variables
-                AutomationElement window = AutomationElement.FromHandle(p.MainWindowHandle);
-                AutomationElementCollection listofelements = FindAllEnabled(window);
-                
-               // IEnumerable<AutomationElementCollection> myEnumerable = new IEnumerable<AutomationElementCollection>(listofelements);
-                foreach (AutomationElement elem in listofelements)
-                {
-                    if (elem.Current.Name != "")
-                    {
-                        gui.AddListView(elem.Current.Name, elem.Current.LocalizedControlType.ToString());
-                    }
-                }
-                gui.AddElementList(listofelements);
-            }
+
+            int start = box.TextLength;
+            box.AppendText(text);
+            int length = text.Length;
+            box.Select(start, length);
+            box.SelectionColor = color;
         }
 
-        //Events
-        /// <summary>
-        /// Set Event Handlers
-        /// </summary>
-        public void SetEventHandler()
+        //Show Dialog
+        public static string ShowDialog(string text, string caption)
         {
-            //Grab Process
-            Process[] processes = Process.GetProcessesByName(ProcessName);
-            //Foreach process
-            foreach (Process p in processes)
+            if (text.Length > 52)
             {
-                //Declare Variables
-                AutomationElement window = AutomationElement.FromHandle(p.MainWindowHandle);
-            Automation.AddStructureChangedEventHandler(window, System.Windows.Automation.TreeScope.Children, new StructureChangedEventHandler(OnStructureChanged));
+                string sub1 = text.Substring(0, 52) + "\n";
+                string sub2 = text.Substring(53, text.Length - 53);
+                text = sub1 + sub2;
             }
-        }
-        /// <summary>
-        /// Event Handler for Structure Changed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnStructureChanged(object sender, StructureChangedEventArgs e)
-        {
-            gui.ClearColumn();
-            LoadObjects();
-            gui.SortColumn();
+            Form prompt = new Form();
+            prompt.Width = 500;
+            prompt.Height = 150;
+            prompt.FormBorderStyle = FormBorderStyle.FixedDialog;
+            prompt.Text = caption;
+            prompt.StartPosition = FormStartPosition.CenterScreen;
+            Label textLabel = new Label() { Left = 50, Height = 200, Top = 5, AutoSize = true, Text = text };
+            TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+            Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 75 };
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+            prompt.Controls.Add(textBox);
+            prompt.Controls.Add(confirmation);
+            prompt.Controls.Add(textLabel);
+            prompt.AcceptButton = confirmation;
+            prompt.ShowDialog();
+            return textBox.Text;
         }
 
-        //UI Automation
-        /// <summary>
-        /// Find all Enabled Elements in Process Window
-        /// </summary>
-        /// <param name="elementWindowElement"></param>
-        /// <returns></returns>
-        public AutomationElementCollection FindAllEnabled(AutomationElement elementWindowElement)
-        {
-            if (elementWindowElement == null)
-            {
-                throw new ArgumentException();
-            }
-            Condition conditions = new PropertyCondition(AutomationElement.IsEnabledProperty, true);
 
-            // Find all children that match the specified conditions.
-            AutomationElementCollection elementCollection =
-                elementWindowElement.FindAll(System.Windows.Automation.TreeScope.Descendants, conditions);
-            return elementCollection;
-        }
+
+
+    
 
     }
 }
