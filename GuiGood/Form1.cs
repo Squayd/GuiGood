@@ -93,8 +93,11 @@ namespace GuiGood
         private void newProjectToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Tuple<string,string> projectTuple = userControl.CreateProject(guiGoodLog, treeView1, ProjectName);
-            ProjectName = projectTuple.Item1;
-            ProjectPath = projectTuple.Item2;
+            if (projectTuple != null)
+            {
+                ProjectName = projectTuple.Item1;
+                ProjectPath = projectTuple.Item2;
+            }
         }
 
         //New Script

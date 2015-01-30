@@ -35,6 +35,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitTimeTracker)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.radioButton2);
             this.groupBox2.Controls.Add(this.radioButton1);
@@ -73,6 +75,7 @@
             this.waitTimeTracker.Size = new System.Drawing.Size(176, 56);
             this.waitTimeTracker.TabIndex = 1;
             this.waitTimeTracker.TickFrequency = 100;
+            this.waitTimeTracker.ValueChanged += new System.EventHandler(this.waitTimeTracker_ValueChanged);
             // 
             // button2
             // 
@@ -99,6 +102,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
             this.radioButton2.Location = new System.Drawing.Point(237, 37);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(79, 24);
@@ -117,6 +121,16 @@
             this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Script Type:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(253, 112);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "0 ms";
             // 
             // ScriptSettings
             // 
@@ -143,5 +157,6 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label3;
     }
 }

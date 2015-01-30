@@ -51,7 +51,7 @@ namespace GuiGood
         /// Click a button from a name or string
         /// </summary>
         /// <param name="name">Name of the element</param>
-        public void ClickButtonWithName(string name, string ProcessName)
+        public bool ClickButtonWithName(string name, string ProcessName)
         {
             //Grab Process
             Process[] processes = Process.GetProcessesByName(ProcessName);
@@ -73,8 +73,31 @@ namespace GuiGood
                     if (elem.Current.ControlType == ControlType.Button && elem.Current.Name == name)
                     {
                         ClickButton(elem, "button");
+                        return true;
                     }
                 }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Set Focus on Main Window
+        /// </summary>
+        /// <param name="ProcessName"></param>
+        public void SetFocusMainWindow(string ProcessName)
+        {
+            //Grab Process
+            Process[] processes = Process.GetProcessesByName(ProcessName);
+            //Foreach process
+            foreach (Process p in processes)
+            {
+                //Declare Variables
+                AutomationElement window = AutomationElement.FromHandle(p.MainWindowHandle);
+                try
+                {
+                    window.SetFocus();
+                }
+                catch { }
             }
         }
 
@@ -84,7 +107,7 @@ namespace GuiGood
         /// <param name="name"></param>
         /// <param name="ProcessName"></param>
         /// <param name="text"></param>
-        public void InsertText(string name, string ProcessName, string text)
+        public bool InsertText(string name, string ProcessName, string text)
         {
             //Grab Process
             Process[] processes = Process.GetProcessesByName(ProcessName);
@@ -106,9 +129,11 @@ namespace GuiGood
                     if (elem.Current.ControlType == ControlType.Edit && elem.Current.Name == name)
                     {
                         InsertTextUsingUIAutomation(elem, text);
+                        return true;
                     }
                 }
             }
+            return false;
         }
 
         /// <summary>
@@ -116,7 +141,7 @@ namespace GuiGood
         /// </summary>
         /// <param name="name"></param>
         /// <param name="ProcessName"></param>
-        public void ClickPanelWithName(string name, string ProcessName)
+        public bool ClickPanelWithName(string name, string ProcessName)
         {
             //Grab Process
             Process[] processes = Process.GetProcessesByName(ProcessName);
@@ -138,9 +163,11 @@ namespace GuiGood
                     if (elem.Current.ControlType == ControlType.Pane && elem.Current.Name == name)
                     {
                         ClickPanel(elem);
+                        return true;
                     }
                 }
             }
+            return false;
         }
 
         /// <summary>
@@ -176,7 +203,7 @@ namespace GuiGood
         /// <param name="name"></param>
         /// <param name="ProcessName"></param>
         /// <param name="text"></param>
-        public void SetItem(string name, string ProcessName, string text)
+        public bool SetItem(string name, string ProcessName, string text)
         {
             //Grab Process
             Process[] processes = Process.GetProcessesByName(ProcessName);
@@ -198,9 +225,11 @@ namespace GuiGood
                     if (elem.Current.ControlType == ControlType.ComboBox && elem.Current.Name == name)
                     {
                         SetSelectedComboBoxItem(elem, text);
+                        return true;
                     }
                 }
             }
+            return false;
         }
 
         /// <summary>
@@ -350,7 +379,7 @@ namespace GuiGood
         /// Write the MMF
         /// </summary>
         /// <param name="info">the obd string to write</param>
-        public void writeMMF(string name, string info)
+        public MemoryMappedFile writeMMF(string name, string info)
         {
             byte[] buffer = Encoding.UTF8.GetBytes(info);
             var mmf = MemoryMappedFile.CreateOrOpen(name, 1000);
@@ -358,6 +387,16 @@ namespace GuiGood
             writer.Write(54, (ushort)buffer.Length);
             writer.WriteArray(54 + 2, buffer, 0, buffer.Length);
             GC.KeepAlive(mmf);
+            return mmf;
+        }
+
+        /// <summary>
+        /// Close Memory Mapped File
+        /// </summary>
+        /// <param name="mmf"></param>
+        public void closeMMF(MemoryMappedFile mmf)
+        {
+            mmf.Dispose();
         }
     }
 }
