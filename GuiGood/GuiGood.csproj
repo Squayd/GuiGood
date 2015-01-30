@@ -49,7 +49,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutomationFunctions.cs" />
+    <Compile Include="Classes\AutomationFunctions.cs" />
     <Compile Include="Classes\ListViewColumnSorter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
