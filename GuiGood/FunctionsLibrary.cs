@@ -15,11 +15,12 @@ namespace GuiGood
 {
     public static class FunctionsLibrary
     {
-        //Variables
-        
-        public string ProcessName = "Systest";
-
-        //Add text to logs with color
+        /// <summary>
+       /// Add Colored Text to logs
+       /// </summary>
+       /// <param name="box"></param>
+       /// <param name="text"></param>
+       /// <param name="color"></param>
         public static void AppendText(RichTextBox box, string text, Color color)
         {
 
@@ -30,7 +31,12 @@ namespace GuiGood
             box.SelectionColor = color;
         }
 
-        //Show Dialog
+        /// <summary>
+        /// Show Dialog Box and get input
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="caption"></param>
+        /// <returns></returns>
         public static string ShowDialog(string text, string caption)
         {
             if (text.Length > 52)
@@ -56,11 +62,6 @@ namespace GuiGood
             prompt.ShowDialog();
             return textBox.Text;
         }
-
-
-
-
-    
 
     }
 }

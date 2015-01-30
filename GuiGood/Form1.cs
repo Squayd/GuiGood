@@ -36,9 +36,7 @@ namespace GuiGood
 
         //Load Form
         #region Load
-
-
-        //Load Stuffz
+        //Load Form
         private void GuiGood_Load(object sender, EventArgs e)
         {
             //Initialize Instances
@@ -51,9 +49,7 @@ namespace GuiGood
             userControl.setupApplication(tabControl1, listView1, listView2, treeView1, imageList1);
            
         }
-
-
-
+        //Initialize Form
         public GuiGood()
         {
             InitializeComponent();
@@ -61,7 +57,6 @@ namespace GuiGood
         #endregion
 
 
-        
 
 
 
@@ -70,29 +65,30 @@ namespace GuiGood
 
 
 
-        
-
-        
 
 
-        
 
 
- 
-
-   
-       
-        
-        
-        
 
 
-        
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //Control Events
-
+        #region Control Events
         //Create a new Project
         private void newProjectToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -216,9 +212,8 @@ namespace GuiGood
             userControl.ScanProcess(textBox3.Text, listView2, userControl, guiGoodLog);
         }
 
+        #endregion
 
-
-        //Functions
 
         //Column Functions
         #region ColumnFunctions
