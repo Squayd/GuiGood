@@ -47,7 +47,7 @@ namespace GuiGood
 
             //Setup Form
             userControl.setupApplication(tabControl1, listView1, listView2, treeView1, imageList1);
-           
+            
         }
         //Initialize Form
         public GuiGood()
@@ -56,7 +56,7 @@ namespace GuiGood
         }
         #endregion
 
-
+        
 
 
 
@@ -106,7 +106,9 @@ namespace GuiGood
         //Open a Project
         private void openProjectToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            userControl.OpenProject(ProjectPath, ProjectName, scriptComboBox, treeView1, guiGoodLog);
+            Tuple<string,string> tupleTemp = userControl.OpenProject(ProjectPath, ProjectName, scriptComboBox, treeView1, guiGoodLog);
+            ProjectName = tupleTemp.Item1;
+            ProjectPath = tupleTemp.Item2;
         }
 
         //Save Script
@@ -210,6 +212,7 @@ namespace GuiGood
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             userControl.ScanProcess(textBox3.Text, listView2, userControl, guiGoodLog);
+            userControl.SetEventHandler(textBox3.Text, listView2);
         }
 
         #endregion
@@ -240,6 +243,12 @@ namespace GuiGood
             }
         }
         #endregion
+
+        private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
+        {
+            ScriptSettings scriptSettings = new ScriptSettings();
+            scriptSettings.Show();
+        }
 
     }
 }

@@ -37,6 +37,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -84,8 +86,6 @@
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.runProjectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -182,7 +182,6 @@
             this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.comboBox3);
-            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.textBox3);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label8);
@@ -190,12 +189,34 @@
             this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1304, 635);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Script Creator";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(627, 602);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(123, 23);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Add Function:";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Write Memory Mapped File",
+            "Send Message"});
+            this.comboBox3.Location = new System.Drawing.Point(756, 601);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(218, 28);
+            this.comboBox3.TabIndex = 18;
             // 
             // textBox3
             // 
@@ -352,6 +373,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Button Press",
+            "Click Pane",
             "Set Text",
             "Select Item",
             "Set Focus"});
@@ -692,11 +714,12 @@
             this.toolStripSplitButton1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.toolStripSplitButton1.Size = new System.Drawing.Size(90, 34);
             this.toolStripSplitButton1.Text = "Run";
+            this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.toolStripSplitButton1_ButtonClick);
             // 
             // runProjectToolStripMenuItem1
             // 
             this.runProjectToolStripMenuItem1.Name = "runProjectToolStripMenuItem1";
-            this.runProjectToolStripMenuItem1.Size = new System.Drawing.Size(153, 24);
+            this.runProjectToolStripMenuItem1.Size = new System.Drawing.Size(175, 24);
             this.runProjectToolStripMenuItem1.Text = "Run Project";
             // 
             // toolStripButton1
@@ -709,27 +732,6 @@
             this.toolStripButton1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.toolStripButton1.Size = new System.Drawing.Size(84, 34);
             this.toolStripButton1.Text = "Stop";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "Write Memory Mapped File",
-            "Send Message"});
-            this.comboBox3.Location = new System.Drawing.Point(756, 601);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(218, 28);
-            this.comboBox3.TabIndex = 18;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(627, 602);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(123, 23);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "Add Function:";
             // 
             // GuiGood
             // 
