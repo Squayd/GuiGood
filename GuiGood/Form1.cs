@@ -218,6 +218,14 @@ namespace GuiGood
             userControl.SetEventHandler(textBox3.Text, listView2);
         }
 
+        //Run Script
+        private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
+        {
+            ScriptSettings scriptSettings = new ScriptSettings();
+            scriptSettings.Show();
+        }
+
+
         #endregion
 
 
@@ -247,11 +255,7 @@ namespace GuiGood
         }
         #endregion
 
-        private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
-        {
-            ScriptSettings scriptSettings = new ScriptSettings();
-            scriptSettings.Show();
-        }
+        
 
     }
 }

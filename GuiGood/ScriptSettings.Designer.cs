@@ -141,6 +141,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "ScriptSettings";
             this.Text = "ScriptSettings";
+            this.Load += new System.EventHandler(this.ScriptSettings_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitTimeTracker)).EndInit();

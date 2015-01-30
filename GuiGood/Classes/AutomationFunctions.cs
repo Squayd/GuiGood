@@ -171,6 +171,33 @@ namespace GuiGood
         }
 
         /// <summary>
+        /// Check if page contains element
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="ProcessName"></param>
+        public bool doesPageContainElement(string name, string ProcessName)
+        {
+            //Grab Process
+            Process[] processes = Process.GetProcessesByName(ProcessName);
+            //Foreach process
+            foreach (Process p in processes)
+            {
+                //Declare Variables
+                AutomationElement window = AutomationElement.FromHandle(p.MainWindowHandle);
+                AutomationElementCollection listofelements = FindAllEnabled(window);
+                //Iterate Elements
+                foreach (AutomationElement elem in listofelements)
+                {
+                    if (elem.Current.Name == name)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Click a Button Object through Send Message
         /// </summary>
         /// <param name="handle"></param>

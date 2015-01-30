@@ -86,6 +86,7 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -356,9 +357,9 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(14, 311);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 23);
+            this.label6.Size = new System.Drawing.Size(134, 23);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Variable Path:";
+            this.label6.Text = "Page Identifier:";
             // 
             // label5
             // 
@@ -545,7 +546,8 @@
             this.toolStripDropDownButton4,
             this.toolStripSeparator1,
             this.toolStripSplitButton1,
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.toolStripSeparator2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -572,28 +574,28 @@
             // newProjectToolStripMenuItem
             // 
             this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
-            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.newProjectToolStripMenuItem.Text = "New Project";
             this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click_1);
             // 
             // newScriptToolStripMenuItem1
             // 
             this.newScriptToolStripMenuItem1.Name = "newScriptToolStripMenuItem1";
-            this.newScriptToolStripMenuItem1.Size = new System.Drawing.Size(164, 24);
+            this.newScriptToolStripMenuItem1.Size = new System.Drawing.Size(175, 24);
             this.newScriptToolStripMenuItem1.Text = "New Script";
             this.newScriptToolStripMenuItem1.Click += new System.EventHandler(this.newScriptToolStripMenuItem1_Click_1);
             // 
             // openProjectToolStripMenuItem
             // 
             this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
-            this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.openProjectToolStripMenuItem.Text = "Open Project";
             this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click_1);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(164, 24);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(175, 24);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click_1);
             // 
@@ -735,6 +737,11 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 34);
+            // 
             // GuiGood
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -828,6 +835,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 
