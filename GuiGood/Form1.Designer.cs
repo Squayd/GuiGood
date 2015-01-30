@@ -215,7 +215,8 @@
             "Write Memory Mapped File",
             "Close Memory Mapped File",
             "Send Message",
-            "Sleep"});
+            "Sleep",
+            "END"});
             this.comboBox3.Location = new System.Drawing.Point(756, 601);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(218, 28);

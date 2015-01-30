@@ -19,6 +19,8 @@ namespace GuiGood
         public static string ScriptName;
         private static MemoryMappedFile mmf;
         private static string processName;
+        private static bool hasEnded;
+
 
         public static void startScript()
         {
@@ -77,6 +79,8 @@ namespace GuiGood
                         }
                     }
                 }
+                hasEnded = false;
+                while (hasEnded == false) { 
                 foreach (string page in pageIdentifiers)
                 {  
                     string[] parsed = page.Split('|');
@@ -99,6 +103,8 @@ namespace GuiGood
                         }
                     }
                     pageCountDo++;
+                    }
+                    pageCountDo = 1;
                 }
                     
             }
@@ -127,26 +133,43 @@ namespace GuiGood
             autoFunc.SetFocusMainWindow(processName);
             if (parsed[1].Contains("Button Press"))
             {
-                autoFunc.ClickButtonWithName(name, processName);
+                try
+                {
+                    autoFunc.ClickButtonWithName(name, processName);
+                    
+                }
+                catch { }
             }
             else
             if (parsed[1].Contains("Click Pane"))
             {
-               autoFunc.ClickPanelWithName(name, processName);
+                try
+                {
+                    autoFunc.ClickPanelWithName(name, processName);
+                }
+                catch { }
             }
             else
             if (parsed[1].Contains("Set Text"))
             {
-                invokeArray = parsed[1].Split(':');
-                invokeText = invokeArray[1];
-                autoFunc.InsertText(name, processName, invokeText);
+                try
+                {
+                    invokeArray = parsed[1].Split(':');
+                    invokeText = invokeArray[1];
+                    autoFunc.InsertText(name, processName, invokeText);
+                }
+                catch { }
             }
             else
             if (parsed[1].Contains("Select Item"))
             {
-                 invokeArray = parsed[1].Split(':');
-                 invokeText = invokeArray[1];
-                 autoFunc.SetItem(name, processName, invokeText);
+                try
+                {
+                    invokeArray = parsed[1].Split(':');
+                    invokeText = invokeArray[1];
+                    autoFunc.SetItem(name, processName, invokeText);
+                }
+                catch { }
             }
             else
             if (parsed[1].Contains("Set Focus"))
@@ -156,24 +179,45 @@ namespace GuiGood
             else
             if (parsed[1].Contains("Write Memory Mapped File"))
             {
-                 string mmfName = parsed[2].Split(':')[0];
-                 string mmfDescrip = parsed[2].Split(':')[1];
-                 mmf = autoFunc.writeMMF(mmfName, mmfDescrip);
+                try
+                {
+                    string mmfName = parsed[2].Split(':')[0];
+                    string mmfDescrip = parsed[2].Split(':')[1];
+                    mmf = autoFunc.writeMMF(mmfName, mmfDescrip);
+                }
+                catch { }
             }
            else
            if (parsed[1].Contains("Close Memory Mapped File"))
            {
-                autoFunc.closeMMF(mmf);
+               try
+               {
+                   autoFunc.closeMMF(mmf);
+               }
+               catch { }
            }
            else
            if (parsed[1].Contains("Send Message"))
            {
-                SendKeys.SendWait(parsed[2]);
+               try
+               {
+                   SendKeys.SendWait(parsed[2]);
+               }
+               catch { }
            }
            else
            if (parsed[1].Contains("Sleep"))
            {
-               Thread.Sleep(Convert.ToInt32(parsed[2]));
+               try
+               {
+                   Thread.Sleep(Convert.ToInt32(parsed[2]));
+               }
+               catch { }
+           } else
+           if (parsed[1].Contains("END"))
+           {
+               hasEnded = true;
+
            }
         }
         

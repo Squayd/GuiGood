@@ -188,9 +188,16 @@ namespace GuiGood
                 //Iterate Elements
                 foreach (AutomationElement elem in listofelements)
                 {
-                    if (elem.Current.Name == name)
+                    try
                     {
-                        return true;
+                        if (elem.Current.Name == name)
+                        {
+                            return true;
+                        }
+                    }
+                    catch
+                    {
+                        return false;
                     }
                 }
             }

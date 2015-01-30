@@ -273,6 +273,13 @@ namespace GuiGood
                         item1.SubItems.Add(comboBox3.SelectedItem.ToString());
                         item1.SubItems.Add(info);
                         listView1.Items.Add(item1);
+                } else
+                if (comboBox3.SelectedItem.ToString() == "END")
+                {
+                    ListViewItem item1 = new ListViewItem("Function");
+                    item1.SubItems.Add(comboBox3.SelectedItem.ToString());
+                    item1.SubItems.Add("END");
+                    listView1.Items.Add(item1);
                 }
 
             }
